@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <div class="navbar2 mt-4">
+        <div>
+            <h2 class="displayitems">Display Airlines Items</h2>
+        </div>
+        <!-- filter declare -->
+        <mat-form-field class="filter">
+            <mat-label>Filter</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search Here...." #input>
+        </mat-form-field>
+    </div>
+    <!-- table declare -->
+    <div class="tablex mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+            <!-- id column -->
+            <ng-container matColumnDef="_id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> S.No </th>
+                <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+            </ng-container>
+            <!-- name column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <!-- country column -->
+            <ng-container matColumnDef="country">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header > Country </th>
+                <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+            </ng-container>
+            <!-- logo column -->
+            <ng-container matColumnDef="logo">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Logo </th>
+                <td mat-cell *matCellDef="let element"> {{element.logo}} </td>
+            </ng-container>
+            <!-- slogan column -->
+            <ng-container matColumnDef="slogan">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header > Slogan </th>
+                <td mat-cell *matCellDef="let element"> {{element.slogan}} </td>
+            </ng-container>
+            <!-- head_quaters column -->
+            <ng-container matColumnDef="head_quaters">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header > Head Quaters </th>
+                <td mat-cell *matCellDef="let element"> {{element.head_quaters}} </td>
+            </ng-container>
+            <!-- website column-->
+            <ng-container matColumnDef="website">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header > Website </th>
+                <td mat-cell *matCellDef="let element"> {{element.website}} </td>
+            </ng-container>
+            <!-- established column-->
+            <ng-container matColumnDef="established">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header > Established </th>
+                <td mat-cell *matCellDef="let element"> {{element.established}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    <!-- paginator declare-->
+    <div class="pages">
+        <mat-paginator [pageSizeOptions]="[8,20,50,100]" aria-label="Select page of users"></mat-paginator>
+    </div>
+</div>
